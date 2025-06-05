@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="weather-card">
+    <h2>{{ location|default:"Unknown Location" }}</h2>
+    <p class="conditions">{{ description|default:"No data" }}</p>
+    
+    <table class="weather-stats">
+        <tr>
+            <th>FEELS LIKE</th>
+            <th>HUMIDITY</th>
+            <th>WIND</th>
+            <th>PRESSURE</th>
+        </tr>
+        <tr>
+            <td><strong>{{ feels_like|default:"N/A" }}°</strong></td>
+            <td><strong>{{ humidity|default:"N/A" }}%</strong></td>
+            <td><strong>{{ wind|default:"N/A" }} km/h</strong></td>
+            <td><strong>{{ pressure|default:"N/A" }} hPa</strong></td>
+        </tr>
+    </table>
+    
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+</div>
+{% endblock %}
